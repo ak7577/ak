@@ -46,13 +46,14 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://source.unsplash.com/240x70/?code,javascript" class="d-block w-100" alt="...">
+                <!-- <img src="https://source.unsplash.com/1200x300/?code,javascript" class="d-block w-100" alt="..."> -->
+                <img src="images\coding-on-laptop.jpg" width=1800 height=400 class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="https://source.unsplash.com/240x70/?code,tech" class="d-block w-100" alt="...">
+                <img src="images\cover-image.jpeg" width=1800 height=400 class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="https://source.unsplash.com/240x70/?technology,robots" class="d-block w-100" alt="...">
+                <img src="images\what-is-coding (1).png" width=1800 height=400 class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -69,7 +70,7 @@
     <!--slider ends-->
 
     <div class="container my-3">
-        <h2 class=text-center>discuss categories</h2>
+        <h2 class=text-center>i-Discuss categories</h2>
         <div class="row">
             <!--inside row use for loop for categories-->
             <!-- fetch  all the categories -->
@@ -101,8 +102,6 @@
             <!--inside row use for loop for categories-->
         </div>
     </div>
-
-
 
     <!--footer-->
     <?php include 'partials\_footer.php';?>

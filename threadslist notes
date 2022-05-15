@@ -1,0 +1,4 @@
+//inserting form in db thread
+INSERT INTO `threads` (`thread_id`, `thread_title`, `thread_description`, `thread_cat_id`, `thread_user_id`, `timestamp`)
+ VALUES (NULL, 'asad', 'assa', '1', '0', current_timestamp());
+ //VALUES ('$th_title', '$th_desc', '$id', '0', current_timestamp());";//

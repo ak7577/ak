@@ -1,0 +1,6 @@
+CREATE TABLE `idiscuss`.`comments` ( `comment_id` INT(8) NOT NULL AUTO_INCREMENT , `comment_content` TEXT NOT NULL , `thread_id` INT(8) NOT NULL , `comment_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`comment_id`)) ENGINE = InnoDB;
+
+ALTER TABLE `comments` ADD `comment_by` INT(8) NOT NULL AFTER `thread_id`;
+
+
+INSERT INTO `comments` (`comment_id`, `comment_content`, `thread_id`, `comment_by`, `comment_time`) VALUES ('1', 'try restart ', '1', '0', current_timestamp());
