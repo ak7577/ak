@@ -1,6 +1,7 @@
 <?php
-    echo '
-   
+session_start();
+
+    echo ' 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/ak">i-Discuss</a>
@@ -30,22 +31,25 @@
               <a class="nav-link" href="contact.php"  >Contact</a>
             </li>
           </ul>
-        <div class="mx-2">
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success" type="submit">Search</button>
-          </form>
-
-        </div>
-            
-            <button class="btn btn-outline-success ml-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-            <button class="btn btn-outline-success mx-2" data-bs-toggle="modal" data-bs-target="#signupModal" >Sign up</button>
-      
-        </div>
+        <div class="mx-2">';
+         if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true ){ //this is condition which will be true if we are logged in same goes forr signup too at last the condition code is written for the same 
+            echo '<form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button><p class="text-light my-0 mx-2">Welcome ' .$_SESSION['useremail'].'</p>
+                    <a href="partials\_logout.php"class="btn btn-outline-success ml-2">Logout</a>
+                    </form>';
+          }else{
+                 echo '<form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-success" type="submit">Search</button>
+                      </form>
+                   </div>
+                  <button class="btn btn-outline-success ml-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                  <button class="btn btn-outline-success mx-2" data-bs-toggle="modal" data-bs-target="#signupModal" >Sign up</button>';        
+                }
+        echo '</div>
       </div>
-    </nav>
-    
-    ';
+    </nav>';
 
     include 'partials\_loginmodal.php';
     include 'partials\_signupmodal.php';

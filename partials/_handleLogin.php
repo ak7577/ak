@@ -10,19 +10,21 @@
         $result= mysqli_query($conn, $sql);// here we got details of email from USERS table
         $numRows=mysqli_num_rows($result);
         if($numRows==1){
-           $row=mysqli_fetch_assoc($result);
-               if(password_verify($pass, $row['user_pass'])){
-                   session_start();
-                   $_SESSION['loggedin']=true;
-                   $_SESSION['useremail']=$email;
-                   echo "logged in"; 
-                  // header("Location: /ak/index.php");
-               }
-               else{
-                   echo "Email already in use";                 
-               }
-           }
-           
+             $row=mysqli_fetch_assoc($result);
+             if(password_verify($pass, $row['user_pass'])){
+                session_start();
+                $_SESSION['loggedin']=true;
+                $_SESSION['useremail']=$email;
+                echo "logged in ". $email; 
+                // header("Location: /ak/index.php");
+            }
+            header("Location: /ak/index.php");// we are redirecting  to index.php if logged in or not no mater
+            /* testing if -else for else condition for wrong pass
+            else{
+            //  echo "unable to log in";                 
+            }*/
+        }    
+        header("Location: /ak/index.php"); 
     }
 
 ?>
