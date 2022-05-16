@@ -7,7 +7,7 @@
         <h5 class="modal-title" id="loginModalLabel">Login to i-Discuss</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/_handleLogin.php" method="post">
+      <form action="/ak/partials/_handleLogin.php" method="post">
             <div class="modal-body">
             
                     <div class="mb-3">
