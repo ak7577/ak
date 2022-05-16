@@ -98,6 +98,7 @@
     <div class="container" >
         <h1>Start Discussions</h1>
         <!--<?php echo $_SERVER['REQUEST_URI']?> for submiting in same page{the path with "catid"} -->
+        
         <form action="<?php echo $_SERVER['REQUEST_URI']?>" method="post">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Problem Title</label>
