@@ -30,9 +30,10 @@
     /* OPTIONAL  
     a:visited, , a:focus,  a:hover
     */
-        #ques{
-            min-height:430px;
-        }
+    #ques {
+        min-height: 430px;
+    }
+
     a {
         text-decoration: none !important;
     }
@@ -80,7 +81,7 @@
             }
         }
     ?>
-    <div class="container my-3" >
+    <div class="container my-3">
         <div class="jumbotron bg-light" style="padding: 20px">
             <h1 class="display-4">Welcome to <?php echo $catname; ?> Forum</h1>
             <p class="lead"><?php echo $catdesc; ?></p>
@@ -94,12 +95,12 @@
             <a class="btn btn-success btn-lg" href="#" role="button">Learn more</a>
         </div>
     </div>
-
-    <div class="container" >
+    <!--addng this as to avoid access to everyone /ony logged in user can start Discussions-->
+    <?php
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true ){// to check if logged in success
+        echo '<div class="container" >
         <h1>Start Discussions</h1>
-        <!--<?php echo $_SERVER['REQUEST_URI']?> for submiting in same page{the path with "catid"} -->
-        
-        <form action="<?php echo $_SERVER['REQUEST_URI']?>" method="post">
+        <form action='.$_SERVER["REQUEST_URI"].' method="post">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Problem Title</label>
                 <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
@@ -111,7 +112,15 @@
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
-    </div>
+    </div>';
+        }else{
+            echo '<div class="container">
+            <h1>Start Discussions</h1>
+            <p class="lead">You are not logged in please loggin to start discussion. </p> 
+         </div>';
+        }
+    ?>
+    
 
     <div class="container my-4" id="ques">
         <h1>Browse Questions</h1>

@@ -84,17 +84,27 @@
         </div>
     </div>
 
-    <div class="container">
-        <h1>Post a comment</h1>
-        
-        <form action="<?php echo $_SERVER['REQUEST_URI']?>" method="post">
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Type your comment</label>
-                <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-success">Post comment</button>
-        </form>
-    </div>
+    <!--addng this as to avoid access to everyone /ony logged in user can start Discussions-->
+    <?php
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true ){
+            echo '<div class="container">
+                <h1>Post a comment</h1>
+                <form action='.$_SERVER["REQUEST_URI"].' method="post">
+                    <div class="mb-3">
+                         <label for="exampleFormControlTextarea1" class="form-label">Type your comment</label>
+                         <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+                     </div>
+                    <button type="submit" class="btn btn-success">Post comment</button>
+                </form>
+            </div>';
+        }else{
+            echo '<div class="container">
+                    <h1>Post a comment</h1>
+                    <p class="lead">You are not logged in please Post a comment. </p> 
+                </div>';
+        }
+    ?>
+    
 
     <div class="container my-4">
         <h2>Discussions</h2>     
