@@ -129,7 +129,6 @@
                 </div>
             </div>';
              }
-
     //echo var_dump($noResult);
     if($noResult){
         echo '<div class="jumbotron bg-light jumbotron-fluid">
