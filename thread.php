@@ -80,7 +80,7 @@
                 3. Please ensure your thread is in the right forum.<br>
                 4. Keep discussions in the one thread: do not spread a topic across multiple threads.<br>
             </p>
-            <p><b>Posted by: Ak</b></p>
+            <p>Posted by:<b> Ak</b></p>
         </div>
     </div>
 

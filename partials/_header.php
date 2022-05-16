@@ -49,4 +49,13 @@
 
     include 'partials\_loginmodal.php';
     include 'partials\_signupmodal.php';
+  // to checkif its signd in and to print sign up is success
+    if (isset($_GET['signupsuccess'])&& $_GET['signupsuccess']==true ){
+      //echo "yes";
+      echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>success</strong> signed up successfully!!!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+    }
+    
 ?>

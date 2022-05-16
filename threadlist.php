@@ -125,11 +125,12 @@
                 $id=$row['thread_id'];
                 $title= $row['thread_title'];
                 $desc= $row['thread_description']; 
-
+                $thread_time= $row['timestamp']; 
                 
                 echo '<div class="media" style="display: flex;">
                         <img src="images\user default image.jpg" width="60px" height="60px"class="mr-3 border" alt="...">
                         <div class="media-body" style="padding-left:5px;">
+                            <p class="fw-bold my-0">Anonymous at ['.$thread_time.']</p>
                             <h5 class="mt-0"><a href="thread.php?threadid='.$id.'">'.$title.'</a></h5>
                             <p>'.$desc.'</p>
                         </div>

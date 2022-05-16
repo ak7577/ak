@@ -1,0 +1,13 @@
+src-harry 59ep 7:00
+ take details from signupmodal form i.e  post 
+and checkwheter its post req if its givingacces to db
+
+where i just created new user name as after creating handle signupmodal tofetch 
+username, email, password fpr this creating new table user 
+
+INSERT INTO `users` (`sno`, `user_email`, `user_pass`, `timestamp`) 
+VALUES ('1', 'test_user@test.com', '1234', current_timestamp());
+
+modified >>
+INSERT INTO `users` (`sno`, `user_email`, `user_pass`, `timestamp`) 
+VALUES ('1', 'test_user@test.com', '1234', current_timestamp());
