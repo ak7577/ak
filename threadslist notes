@@ -4,3 +4,7 @@ INSERT INTO `threads` (`thread_id`, `thread_title`, `thread_description`, `threa
  //VALUES ('$th_title', '$th_desc', '$id', '0', current_timestamp());";//
 
  <!--<?php echo $_SERVER['REQUEST_URI']?> ref line 102 for submiting in same page{the path with "catid"} -->
+
+ pulling the details i.e email id to remove anonymous and print the exact email id of the user 
+ in the discussion [ref theradlist.php ] sql query to pull the data[user email]
+ //SQL== SELECT user_email FROM `users` WHERE sno=1

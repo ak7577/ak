@@ -11,3 +11,7 @@ VALUES ('1', 'test_user@test.com', '1234', current_timestamp());
 modified >>
 INSERT INTO `users` (`sno`, `user_email`, `user_pass`, `timestamp`) 
 VALUES ('1', 'test_user@test.com', '1234', current_timestamp());
+
+adding username>>>
+
+ALTER TABLE `users` ADD `user_name` VARCHAR(20) NOT NULL AFTER `sno`;

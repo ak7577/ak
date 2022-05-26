@@ -67,8 +67,9 @@
             //insert into thread into db
             $th_title=$_POST['title'];
             $th_desc=$_POST['desc'];
+            $sno=$_POST['sno'];
             $sql="INSERT INTO `threads` (`thread_title`, `thread_description`, `thread_cat_id`, `thread_user_id`, `timestamp`) 
-            VALUES ('$th_title', '$th_desc', '$id', '0', current_timestamp());";
+            VALUES ('$th_title', '$th_desc', '$id', '$sno', current_timestamp());";
             $result=mysqli_query($conn, $sql);
             $showAlert=true;
 
@@ -106,6 +107,7 @@
                 <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text">Keep your title short and crisp as possible </div>
             </div>
+            <input type="hidden" name="sno" value="'.$_SESSION["sno"].'">
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Ellaborate your concern</label>
                 <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
@@ -120,7 +122,7 @@
          </div>';
         }
     ?>
-    
+
 
     <div class="container my-4" id="ques">
         <h1>Browse Questions</h1>
@@ -136,14 +138,18 @@
                 $title= $row['thread_title'];
                 $desc= $row['thread_description']; 
                 $thread_time= $row['timestamp']; 
+                $thread_user_id= $row['thread_user_id'];
+                $sql2="SELECT user_names FROM `users` WHERE sno='$thread_user_id'";
+                $result2=mysqli_query($conn, $sql2);
+                $row2= mysqli_fetch_assoc($result2);
                 
-                echo '<div class="media" style="display: flex;">
+                echo '<div class="media my-3" style="display: flex;">
                         <img src="images\user default image.jpg" width="60px" height="60px"class="mr-3 border" alt="...">
-                        <div class="media-body" style="padding-left:5px;">
-                            <p class="fw-bold my-0">Anonymous at ['.$thread_time.']</p>
+                        <div class="media-body">                            
                             <h5 class="mt-0"><a href="thread.php?threadid='.$id.'">'.$title.'</a></h5>
                             <p>'.$desc.'</p>
                         </div>
+                            <p class="fw-bold  my-0 mx-2">'.$row2['user_names'].' at ['.$thread_time.']</p>
                     </div>';
             }
             //echo var_dump($noResult);
@@ -160,7 +166,6 @@
 
 
     </div>
-
 
     <!--footer-->
     <?php include 'partials\_footer.php';?>

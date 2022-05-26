@@ -1,4 +1,5 @@
 <?php
+$showError="false";
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         include '_dbconnect.php';
@@ -14,8 +15,9 @@
              if(password_verify($pass, $row['user_pass'])){
                 session_start();
                 $_SESSION['loggedin']=true;
+                $_SESSION['sno']= $row['sno'];//taking the sno in session[php 64 /20;00]
                 $_SESSION['useremail']=$email;
-                echo "logged in ". $email; 
+                echo "logged in". $email; 
                 // header("Location: /ak/index.php");
             }
             header("Location: /ak/index.php");// we are redirecting  to index.php if logged in or not no mater

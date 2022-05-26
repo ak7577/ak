@@ -53,8 +53,9 @@
         if($method=='POST'){
             //insert into commnet db
             $comment=$_POST['comment'];
+            $sno=$_POST['sno'];
             $sql="INSERT INTO `comments` (`comment_content`, `thread_id`, `comment_by`, `comment_time`) 
-            VALUES ('$comment', '$id', '0', current_timestamp());";
+            VALUES ('$comment', '$id', '$sno', current_timestamp());";
             //adding the $result is neccesary or will not able to insert the data
             $result=mysqli_query($conn, $sql);
             $showAlert=true;
@@ -89,10 +90,11 @@
         if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true ){
             echo '<div class="container">
                 <h1>Post a comment</h1>
-                <form action='.$_SERVER["REQUEST_URI"].' method="post">
+                <form action="'.$_SERVER["REQUEST_URI"].'"  method="post">
                     <div class="mb-3">
                          <label for="exampleFormControlTextarea1" class="form-label">Type your comment</label>
                          <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+                         <input type="hidden" name="sno" value="'.$_SESSION["sno"].'">
                      </div>
                     <button type="submit" class="btn btn-success">Post comment</button>
                 </form>
@@ -120,11 +122,16 @@
                 $id=$row['comment_id'];
                 $content= $row['comment_content']; 
                 $comment_time= $row['comment_time']; 
+                //adding here this to pull usernames
+                $thread_user_id= $row['comment_by'];
+                $sql3="SELECT user_names FROM `users` WHERE sno='$thread_user_id'";
+                $result2=mysqli_query($conn, $sql3);
+                $row2= mysqli_fetch_assoc($result2);
 
                 echo '<div class="media" style="display: flex;">
                 <img src="images\user default image.jpg" width="60px" height="60px"class="mr-3 border" alt="...">
                 <div class="media-body" style="padding-left:5px;">
-                    <p class="fw-bold my-0">Anonymous at ['.$comment_time.']</p>
+                    <p class="fw-bold my-0">'.$row2['user_names'].' at ['.$comment_time.']</p>
                     <p>'.$content.'</p>
                 </div>
             </div>';
