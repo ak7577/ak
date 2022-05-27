@@ -42,6 +42,12 @@
          while($row= mysqli_fetch_assoc($result)){
             $title= $row['thread_title'];
             $desc= $row['thread_description'];
+            $thread_user_id=$row['thread_user_id'];
+            //fetching the data from users table to print thread Posted by- userName
+            $sql3="SELECT user_names FROM `users` WHERE sno='$thread_user_id'";
+                $result2=mysqli_query($conn, $sql3);
+                $row2= mysqli_fetch_assoc($result2);
+                $posted_by= $row2['user_names'];
         }
     ?>
 
@@ -53,6 +59,8 @@
         if($method=='POST'){
             //insert into commnet db
             $comment=$_POST['comment'];
+            $comment=str_replace("<", "&lt;", $comment);
+            $comment=str_replace(">", "&gt;", $comment);
             $sno=$_POST['sno'];
             $sql="INSERT INTO `comments` (`comment_content`, `thread_id`, `comment_by`, `comment_time`) 
             VALUES ('$comment', '$id', '$sno', current_timestamp());";
@@ -81,7 +89,8 @@
                 3. Please ensure your thread is in the right forum.<br>
                 4. Keep discussions in the one thread: do not spread a topic across multiple threads.<br>
             </p>
-            <p>Posted by:<b> Ak</b></p>
+            <!--<p>Posted by:<b> Ak</b></p>-->
+                <p>Posted by: <b><?php echo $posted_by; ?> </b></p>
         </div>
     </div>
 
@@ -140,7 +149,7 @@
     if($noResult){
         echo '<div class="jumbotron bg-light jumbotron-fluid">
             <div class="container">
-          <h1 class="display-6">No Results Found</h1>
+          <h1 class="display-6">No Comments Found</h1>
           <p class="lead">Be the first person to ask a question.</p>
         </div>
       </div>';

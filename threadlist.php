@@ -67,13 +67,20 @@
             //insert into thread into db
             $th_title=$_POST['title'];
             $th_desc=$_POST['desc'];
+
+            $th_title=str_replace("<", "&lt;", $th_title);
+            $th_title=str_replace(">", "&gt;", $th_title);
+
+            $th_desc=str_replace("<", "&lt;", $th_desc);
+            $th_desc=str_replace(">", "&gt;", $th_desc);
+
             $sno=$_POST['sno'];
             $sql="INSERT INTO `threads` (`thread_title`, `thread_description`, `thread_cat_id`, `thread_user_id`, `timestamp`) 
             VALUES ('$th_title', '$th_desc', '$id', '$sno', current_timestamp());";
             $result=mysqli_query($conn, $sql);
             $showAlert=true;
 
-            if(  $showAlert){
+            if( $showAlert){
 
              echo   '<div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>success</strong> Thread has been added successfully!!!
@@ -99,7 +106,7 @@
     <!--addng this as to avoid access to everyone /ony logged in user can start Discussions-->
     <?php
         if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true ){// to check if logged in success
-        echo '<div class="container" >
+        echo '<div class="container">
         <h1>Start Discussions</h1>
         <form action='.$_SERVER["REQUEST_URI"].' method="post">
             <div class="mb-3">
@@ -145,11 +152,11 @@
                 
                 echo '<div class="media my-3" style="display: flex;">
                         <img src="images\user default image.jpg" width="60px" height="60px"class="mr-3 border" alt="...">
-                        <div class="media-body">                            
+                        <div class="media-body mx-2">                            
                             <h5 class="mt-0"><a href="thread.php?threadid='.$id.'">'.$title.'</a></h5>
-                            <p>'.$desc.'</p>
+                            <p>'.$desc.'</p>                       
                         </div>
-                            <p class="fw-bold  my-0 mx-2">'.$row2['user_names'].' at ['.$thread_time.']</p>
+                            <p class="fw-bold  my-0 mx-2">'.$row2['user_names'].' at ['.$thread_time.']</p>     
                     </div>';
             }
             //echo var_dump($noResult);
