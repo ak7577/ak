@@ -2,6 +2,14 @@
 <html lang="en">
 
 <head>
+    <!--favicon
+     <link rel="shortcut icon" type="image/png" href="images\favicon.ico">
+    -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images\fav\/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images\fav\/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images\fav\/favicon-16x16.png">
+    <link rel="manifest" href="images\fav\/site.webmanifest">
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,21 +26,19 @@
     </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!-- -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
-    </script>
-
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
     <title>i-discuss</title>
 </head>
+
 <!-- style="background-color:#747474;" -->
+
 <body>
     <!--header-->
-    <?php include 'partials\_header.php';?>
     <?php include 'partials\_dbconnect.php';?>
+    <?php include 'partials\_header.php';?>
 
     <!--slider starts-->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -69,6 +75,8 @@
     </div>
     <!--slider ends-->
 
+
+    <!--categories starts -->
     <div class="container my-3">
         <h2 class=text-center>i-Discuss categories</h2>
         <div class="row">
@@ -86,22 +94,24 @@
 
                 echo '
                 <div class="col-md-4 my-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://source.unsplash.com/200x150/?'.$cat.',javascript" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><a style=" text-decoration: none" href="threadlist.php?catid='.$id.'">'.$cat.'</a></h5>
-                        <p class="card-text">'.substr($desc,0,50).'...</p>
-                        <a href="threadlist.php?catid='.$id.'" class="btn btn-primary">Go somewhere</a>
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://source.unsplash.com/200x150/?'.$cat.',javascript" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><a style=" text-decoration: none" href="threadlist.php?catid='.$id.'">'.$cat.'</a></h5>
+                            <p class="card-text">'.substr($desc,0,50).'...</p>
+                            <a href="threadlist.php?catid='.$id.'" class="btn btn-primary">Go somewhere</a>
+                        </div>
                     </div>
-                </div>
-            </div>';
+                </div>';
          
               }
             ?>
-            
+
             <!--inside row use for loop for categories-->
         </div>
     </div>
+    
+    <!--categories ends here -->
 
     <!--footer-->
     <?php include 'partials\_footer.php';?>

@@ -21,9 +21,8 @@
     <title>i-discuss</title>
   </head>
   <body>
-    
+  <?php include 'partials\_dbconnect.php';?>
     <?php include 'partials\_header.php';?> 
-
      <?php include 'partials\_footer.php';?> 
   </body>
 </html>
